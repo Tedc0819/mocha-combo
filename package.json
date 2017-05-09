@@ -1,0 +1,14 @@
+{
+  "name": "mocha-combo",
+  "version": "0.0.1",
+  "description": "A testing framework that will generate mocha test cases based on config",
+  "keywords": ["mocha", "test", "unit test"],
+  "main": "index.js",
+  "bugs": {
+    "email": "tedchength@gmail.com" 
+  },
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^2.5.3"
+  } 
+}

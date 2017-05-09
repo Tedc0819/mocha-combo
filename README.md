@@ -22,7 +22,7 @@ class TestSuite extends MochaCombo {
 
     this._argTypes = {
 
-      userId: ['correct', 'boltUserId', 'notExist', 'null'],
+      userId: ['correct', 'notExist', 'null'],
       jobId: ['correct', 'notExist', 'null'],
 
     }
@@ -53,8 +53,8 @@ class TestSuite extends MochaCombo {
   getArgValues(test, combination, arg, argType) {
 
     let values = {
-      userId: sampleInput.getSample('userId', { correct: test.user.id, boltUserId: test.user.boltUserId }),
-      jobId: sampleInput.getSample('jobId', { correct: sampleInput.boltAdId }),
+      userId: sampleInput.getSample('userId', { correct: test.user.id}),
+      jobId: sampleInput.getSample('jobId', { correct: '112233' }),
     }
 
     return values[arg][argType]
@@ -71,7 +71,7 @@ class TestSuite extends MochaCombo {
 
     let [userId, jobId] = combination
 
-    return userId.match(/correct|boltUserId/)
+    return userId.match(/correct/)
       && jobId.match(/correct/) ;
 
   }

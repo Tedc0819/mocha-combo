@@ -148,3 +148,28 @@ class TestSuite extends MochaCombo {
 let testSuite = new TestSuite;
 testSuite.run();
 ```
+
+This should generate mocha test result like this.
+```
+AppliedJob.applyJob(userId,jobId)
+  success - [correct, correct]
+    ✓ should return appliedJob Instance with job details
+    ✓ should return the same applied job if applying twice
+  failure - [correct, notExist]
+    ✓ should return error blah blah blah 
+  failure - [correct, null]
+    ✓ should return error blah blah blah 
+  failure - [notExist, correct]
+    ✓ should return error blah blah blah 
+  failure - [notExist, notExist]
+    ✓ should return error blah blah blah 
+  failure - [notExist, null]
+    ✓ should return error blah blah blah 
+  failure - [null, correct]
+    ✓ should return error blah blah blah 
+  failure - [null, notExist]
+    ✓ should return error blah blah blah 
+  failure - [null, null]
+    ✓ should return error blah blah blah 
+
+```

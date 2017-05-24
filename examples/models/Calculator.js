@@ -10,6 +10,10 @@ class Calculator {
     return this._currentValue; 
   }
 
+  set currentValue(value) {
+    this._currentValue = value; 
+  }
+
   add(value) {
 
     if (typeof value == 'string') {

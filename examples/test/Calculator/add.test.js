@@ -8,15 +8,13 @@ class TestSuite extends MochaCombo {
 
     super()
  
-    this._methodName = 'Calculator.add'
+    this.methodName = 'Calculator.add'
  
-    this._args = ['value']
+    this.args = ['value']
  
-    this._argTypes = {
+    this.argTypes = {
       value: ['integer', 'integerStr', 'string']
     }
-
-    this._extraCombinations = [] 
 
   }
 

@@ -17,7 +17,7 @@ class InputCombinationTestSuite {
      * methodName: 'GET /foo/bar/:barId'
      */ 
 
-    this._methodName = '';
+    this.methodName = '';
 
     /*
      * Arguments that will vary the test flow. Most of the time it should be like this.
@@ -33,7 +33,7 @@ class InputCombinationTestSuite {
      * Sometimes you may need some extra arguments those the method does not need but for some extra fixture setting
      */ 
 
-    this._args = []; 
+    this.args = []; 
 
     /* 
      * Argument types that will exist for arguments. You can use any string to identify cases.
@@ -52,13 +52,16 @@ class InputCombinationTestSuite {
      * You may also want to test what if the input email is with wrong format.
      */ 
 
-    this._argTypes = {};
+    this.argTypes = {};
   }
 
   get args () { return this._args; }
   get argTypes () { return this._argTypes };
   get methodName () { return this._methodName; };
 
+  set args (value) { this._args = value; }
+  set argTypes (value) { this._argTypes = value };
+  set methodName (value) { this._methodName = value; };
   /*
    *
    * Extra combination of Args type you want to run. 

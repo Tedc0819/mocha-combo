@@ -33,9 +33,20 @@ class TestSuite extends MochaCombo {
 
   afterEach(test, combination) {}
 
-  only(combination) {}
+  only(combination) {
 
-  skip(combination) {}
+    let [currentValue, value] = combination;  
+
+    return currentValue.match(/zero|five/); 
+  }
+
+  skip(combination) {
+  
+    let [currentValue, value] = combination;  
+
+    return value.match(/string/); 
+  
+  }
 
   stub(test, combination) {}
 
@@ -57,11 +68,20 @@ class TestSuite extends MochaCombo {
       value: {
         'integer': 1, 
         'integerStr': "1111", 
-        'string': "fdfafds" 
+        'string': "fdfafds",
+        'two': 2
       }
     }
  
     return argValues[arg][argType];
+
+  }
+
+  extraCombinations(test) {
+
+    return [
+      ['zero', 'two']
+    ]; 
 
   }
 
@@ -78,7 +98,7 @@ class TestSuite extends MochaCombo {
 
     let [ currentValue, value ] = combination;
 
-    return value == 'integer'; 
+    return value == 'integer' || value == 'two'; 
 
   }
 

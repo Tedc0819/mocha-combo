@@ -6,6 +6,12 @@ Testing is basically done against a test point / method. There are lots of facto
 
 This layer actually run on top of mocha. All the phases (like beforeEach) can be set up according to combination of testing factors. The result can be easily divided into success assert and failure assert according to combinations.
 
+You can read /examples for more details.
+https://github.com/Tedc0819/mocha-combo/tree/master/examples
+
+You can also read the API doc in src file
+https://github.com/Tedc0819/mocha-combo/blob/master/src/MochaCombo.js
+
 ### basic example
 ```js
 

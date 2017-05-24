@@ -134,8 +134,9 @@ This example demonstrate some advanced features.
 2. the 'skip' function
 3. the 'extraCombinations' function
 4. the case that the arguments is not exactly the argument of the method
-5.
-```
+
+```js
+
 const MochaCombo = require('../../../index.js');
 const Calculator = require('../../models/Calculator.js');
 const assert = require('chai').assert;

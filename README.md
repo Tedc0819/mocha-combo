@@ -1,5 +1,7 @@
 # mocha-combo
 
+https://github.com/Tedc0819/mocha-combo
+
 mocha-combo is a testing framework based on mocha. It generates test cases by your configuration and input. Testing with high coverage is now easy to achieve.
 
 Testing is basically done against a test point / method. There are lots of factors / arguments that will affect the result. Instead of defining the testing condition as a whole, we can define each condition of each factor. With this new kind of definition, we can easily generate all combintaion. There will be no need to write it one by one.
@@ -128,6 +130,13 @@ Calculator.add(value)
     ✓ should not work
 ```
 
+
+This example demonstrate some advanced features.
+1. the 'only' function
+2. the 'skip' function
+3. the 'extraCombinations' function
+4. the case that the arguments is not exactly the argument of the method
+5.
 ```
 const MochaCombo = require('../../../index.js');
 const Calculator = require('../../models/Calculator.js');
@@ -156,7 +165,6 @@ class TestSuite extends MochaCombo {
 
   beforeEach(test, combination) {
 
-    // most of the time, you will want to run your test for every assertion.
     return this.runTest(test, combination);
   
   }
@@ -165,9 +173,20 @@ class TestSuite extends MochaCombo {
 
   afterEach(test, combination) {}
 
-  only(combination) {}
+  only(combination) {
 
-  skip(combination) {}
+    let [currentValue, value] = combination;  
+
+    return currentValue.match(/zero|five/); 
+  }
+
+  skip(combination) {
+  
+    let [currentValue, value] = combination;  
+
+    return value.match(/string/); 
+  
+  }
 
   stub(test, combination) {}
 
@@ -189,11 +208,20 @@ class TestSuite extends MochaCombo {
       value: {
         'integer': 1, 
         'integerStr': "1111", 
-        'string': "fdfafds" 
+        'string': "fdfafds",
+        'two': 2
       }
     }
  
     return argValues[arg][argType];
+
+  }
+
+  extraCombinations(test) {
+
+    return [
+      ['zero', 'two']
+    ]; 
 
   }
 
@@ -210,7 +238,7 @@ class TestSuite extends MochaCombo {
 
     let [ currentValue, value ] = combination;
 
-    return value == 'integer'; 
+    return value == 'integer' || value == 'two'; 
 
   }
 
@@ -239,4 +267,25 @@ class TestSuite extends MochaCombo {
 
 let testSuite = new TestSuite;
 testSuite.run();
+```
+
+This should give result like this.
+
+```
+Calculator.add(currentValue,value)
+  success - [zero, integer]
+    ✓ should work
+  failure - [zero, integerStr]
+    ✓ should not work
+  failure - [zero, string]
+    - should not work
+  success - [five, integer]
+    ✓ should work
+  failure - [five, integerStr]
+    ✓ should not work
+  failure - [five, string]
+    - should not work
+  success - [zero, two]
+    ✓ should work
+
 ```

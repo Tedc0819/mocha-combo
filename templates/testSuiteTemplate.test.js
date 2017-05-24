@@ -1,6 +1,6 @@
-const InputCombinationTestSuite from 'input-combination-test-suite';
+const MochaCombo from 'mocha-combo';
 
-class TestSuite extends InputCombinationTestSuite {
+class TestSuite extends MochaCombo {
 
   constructor() {
 

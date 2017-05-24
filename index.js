@@ -1,1 +1,1 @@
-module.exports = require('./src/InputCombinationTestSuite.js') 
+module.exports = require('./src/MochaCombo.js') 

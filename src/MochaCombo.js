@@ -175,14 +175,17 @@ class InputCombinationTestSuite {
 
   runTest(test, combination) {
 
-    return this.stub(test, combination)
-      .then( () => this.setFixtures(test, combination) )
+    return new Promise(function(resolve) {
+        return resolve(null); 
+      }) 
+      .then( () => this.stub(test, combination) || null )
+      .then( () => this.setFixtures(test, combination) || null )
       .then( () => {
 
         let argValues = this.gatherArgsValue(test, combination);
 
         test.args = argValues;
-        return this.testMethod(test, combination, argValues);
+        return this.testMethod(test, combination, argValues) || null;
 
       })
       .then(res => test.res = res)

@@ -6,13 +6,11 @@ class TestSuite extends MochaCombo {
 
     super()
  
-    this._methodName = ''
+    this.methodName = ''
  
-    this._args = []
+    this.args = []
  
-    this._argTypes = {}
-
-    this._extraCombinations = [] 
+    this.argTypes = {}
 
   }
 
@@ -30,6 +28,8 @@ class TestSuite extends MochaCombo {
 
   stub(test, combination) {}
 
+  extraCombinations() {};
+ 
   setFixtures(test, combination) {}
 
   getArgValues(test, combination, arg, argType) {}

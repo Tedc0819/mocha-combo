@@ -52,6 +52,12 @@ class Calculator {
     return types.includes(type);
 
   }
+
+  giveSuggestion() {
+
+    return 'This is my suggestion';
+  
+  }
 }
 
 module.exports = Calculator;

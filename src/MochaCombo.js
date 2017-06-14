@@ -243,6 +243,12 @@ class InputCombinationTestSuite {
 
     var combinations = self.combinations();
 
+    if (!combinations.length) {
+
+      combinations.push([]);
+    
+    }
+
     var onlyCases = []
 
     combinations.forEach(function(combination) {

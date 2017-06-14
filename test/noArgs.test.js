@@ -4,13 +4,12 @@ class TestSuite extends MochaCombo {
   
     super();
   
-    this.methodName = "PromiseCalculator.add"
+    this.methodName = "PromiseCalculator.giveSuggestion"
 
-    this.args = ['value1', 'value2']
+    this.args = []
 
     this.argTypes = {
-      value1: ['one', 'ten', 'hundred'],
-      value2: ['two', 'four', 'six'],
+      
     }
 
   }
@@ -38,16 +37,7 @@ class TestSuite extends MochaCombo {
   getArgValues(test, combination, arg, argType) {
  
     let values = {
-      value1: {
-        'one': 1, 
-        'ten': 10, 
-        'hundred': 100
-      },
-      value2: {
-        'two': 2, 
-        'four': 4, 
-        'six': 6
-      }
+
     }
   
     return values[arg][argType];

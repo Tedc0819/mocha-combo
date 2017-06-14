@@ -1,6 +1,6 @@
 {
   "name": "mocha-combo",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A testing framework that will generate mocha test cases based on config",
   "keywords": [
     "mocha",

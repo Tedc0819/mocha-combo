@@ -14,6 +14,10 @@ https://github.com/Tedc0819/mocha-combo/tree/master/examples
 You can also read the API doc in src file
 https://github.com/Tedc0819/mocha-combo/blob/master/src/MochaCombo.js
 
+### Release note
+0.0.9
+- The framework should still run with argument [] even there is no args and argTypes
+
 ### basic example
 ```js
 

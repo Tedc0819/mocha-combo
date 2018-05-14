@@ -1,1 +1,1 @@
-module.exports = require('./src/MochaCombo.js') 
+module.exports = require('./lib/MochaCombo.js')

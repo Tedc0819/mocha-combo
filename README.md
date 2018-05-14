@@ -15,6 +15,10 @@ You can also read the API doc in src file
 https://github.com/Tedc0819/mocha-combo/blob/master/src/MochaCombo.js
 
 ### Release note
+0.1.0
+- using cartesian-product to replace getCombinations
+- using async-await
+
 0.0.9
 - The framework should still run with argument [] even there is no args and argTypes
 
@@ -30,11 +34,11 @@ class TestSuite extends MochaCombo {
   constructor() {
 
     super()
- 
+
     this.methodName = 'Calculator.add'
- 
+
     this.args = ['value']
- 
+
     this.argTypes = {
       value: ['integer', 'integerStr', 'string']
     }
@@ -46,7 +50,7 @@ class TestSuite extends MochaCombo {
   beforeEach(test, combination) {
 
     return this.runTest(test, combination);
-  
+
   }
 
   after(test, combination) {}
@@ -65,12 +69,12 @@ class TestSuite extends MochaCombo {
 
     let argValues = {
       value: {
-        'integer': 1, 
-        'integerStr': "1111", 
-        'string': "fdfafds" 
+        'integer': 1,
+        'integerStr': "1111",
+        'string': "fdfafds"
       }
     }
- 
+
     return argValues[arg][argType];
 
   }
@@ -81,7 +85,7 @@ class TestSuite extends MochaCombo {
     // you can attach any varible to test. so that you can access it when you assert it
     // test equals to 'this' in moche test function
     test.calculator = calculator;
-    
+
     return calculator.add(...argsValues);
   }
 
@@ -91,28 +95,28 @@ class TestSuite extends MochaCombo {
 
     let [ value ] = combination;
 
-    return value == 'integer'; 
+    return value == 'integer';
 
   }
 
   successAssert(combination) {
- 
+
     it('should work', function() {
-      
-      assert.equal(this.res, 1); 
-    
+
+      assert.equal(this.res, 1);
+
     })
-  
+
   }
 
   failureAssert(combination) {
-  
+
     it('should not work', function() {
 
       assert(this.res instanceof Error);
-    
+
     })
- 
+
   }
 }
 
@@ -150,11 +154,11 @@ class TestSuite extends MochaCombo {
   constructor() {
 
     super()
- 
+
     this.methodName = 'Calculator.add'
- 
+
     this.args = ['currentValue', 'value']
- 
+
     this.argTypes = {
       currentValue: ['zero', 'five', 'six'], // just example. it can be 'highestCapableValue', blah blah blah
       value: ['integer', 'integerStr', 'string']
@@ -167,7 +171,7 @@ class TestSuite extends MochaCombo {
   beforeEach(test, combination) {
 
     return this.runTest(test, combination);
-  
+
   }
 
   after(test, combination) {}
@@ -176,23 +180,23 @@ class TestSuite extends MochaCombo {
 
   only(combination) {
 
-    let [currentValue, value] = combination;  
+    let [currentValue, value] = combination;
 
-    return currentValue.match(/zero|five/); 
+    return currentValue.match(/zero|five/);
   }
 
   skip(combination) {
-  
-    let [currentValue, value] = combination;  
 
-    return value.match(/string/); 
-  
+    let [currentValue, value] = combination;
+
+    return value.match(/string/);
+
   }
 
   stub(test, combination) {}
 
   setFixtures(test, combination) {
-    
+
     let calculator = new Calculator;
     test.calculator = calculator;
 
@@ -207,13 +211,13 @@ class TestSuite extends MochaCombo {
         six: 6
       },
       value: {
-        'integer': 1, 
-        'integerStr': "1111", 
+        'integer': 1,
+        'integerStr': "1111",
         'string': "fdfafds",
         'two': 2
       }
     }
- 
+
     return argValues[arg][argType];
 
   }
@@ -222,7 +226,7 @@ class TestSuite extends MochaCombo {
 
     return [
       ['zero', 'two']
-    ]; 
+    ];
 
   }
 
@@ -239,30 +243,30 @@ class TestSuite extends MochaCombo {
 
     let [ currentValue, value ] = combination;
 
-    return value == 'integer' || value == 'two'; 
+    return value == 'integer' || value == 'two';
 
   }
 
   successAssert(combination) {
- 
+
     it('should work', function() {
-      
-      let [ currentValue, value] = this.args; // you can get the args during Assertion 
-      
-      assert.equal(this.res, currentValue + value); 
-    
+
+      let [ currentValue, value] = this.args; // you can get the args during Assertion
+
+      assert.equal(this.res, currentValue + value);
+
     })
-  
+
   }
 
   failureAssert(combination) {
-  
+
     it('should not work', function() {
 
       assert(this.res instanceof Error);
-    
+
     })
- 
+
   }
 }
 
